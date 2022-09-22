@@ -74,10 +74,10 @@
                             }(document, 'script', 'facebook-jssdk'));
                             </script> -->
 
-                    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+                    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
                     <script src="{{ asset('js/share.js') }}"></script>
 
-                    <!-- <div class="container">
+                    <div class="container">
                         <form method="post" action="{{ route('images.store') }}" 
                                 enctype="multipart/form-data">
                             @csrf
@@ -93,6 +93,8 @@
                     </div>    
                 </div>
             </div>    -->
+
+            <a href ="https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id={{env('CLIENT_ID')}}&redirect_uri={{env('REDIRECT_URL')}}&scope={{env('SCOPE')}}">Test</a>
         </section>
 
     </body>

@@ -19,17 +19,17 @@ class PostFacebooksController extends Controller
         return view ('welcome',$data);
     }
 
-    // public function storeImage(Request $request){
-    //     $data= new PostFacebook();
+    public function storeImage(Request $request){
+        $data= new PostFacebook();
 
-    //     if($request->file('image')){
-    //         $file= $request->file('image');
-    //         $filename= date('YmdHi').$file->getClientOriginalName();
-    //         $file-> move(public_path('images'), $filename);
-    //         $data['image']= $filename;
-    //     }
-    //     $data->save();
-    //     return view ('welcome');
-    // }    
+        if($request->file('image')){
+            $file= $request->file('image');
+            $filename= date('YmdHi').$file->getClientOriginalName();
+            $file-> move(public_path('images'), $filename);
+            $data['image']= $filename;
+        }
+        $data->save();
+        return view ('welcome');
+    }    
 }
 

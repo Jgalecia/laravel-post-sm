@@ -236,4 +236,6 @@ return [
 
     ],
 
+    'test_url' => env ('TEST_URl','https://www.linkedin.com/oauth/v2/authorization?response_type=code')
+
 ];
