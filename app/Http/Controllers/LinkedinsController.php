@@ -8,13 +8,20 @@ use GuzzleHttp\Client;
 
 class LinkedinsController extends Controller
 {
+    public function redirect(){
+       
+        $url = "https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=".env('CLIENT_ID')."&redirect_uri=".env('REDIRECT_URL')."&scope=".env('SCOPES');
+
+        return $url;
+    }
     public function callback (Request $request){
+
         try {
             $client = new Client(['base_uri' => 'https://www.linkedin.com']);
             $response = $client->request('POST', '/oauth/v2/accessToken', [
                 'form_params' => [
                         "grant_type" => "authorization_code",
-                        "code" => $_GET($REQUEST)['code'],
+                        "code" => $_GET['code'],
                         "redirect_uri" => env('REDIRECT_URL'),
                         "client_id" => env('CLIENT_ID'),
                         "client_secret" => env('CLIENT_SECRET'),
@@ -26,6 +33,20 @@ class LinkedinsController extends Controller
         } catch(Exception $e) {
             echo $e->getMessage();
         }
+        try {
+            $client = new Client(['base_uri' => 'https://api.linkedin.com']);
+            $response = $client->request('GET', '/v2/me', [
+                'headers' => [
+                    "Authorization" => "Bearer " . $access_token,
+                ],
+            ]);
+            $data = json_decode($response->getBody()->getContents(), true);
+            $linkedin_profile_id = $data['id']; // store this id somewhere
+            echo $linkedin_profile_id;
+        } catch(Exception $e) {
+            echo $e->getMessage();
+        }
+
     }
     //     if (isset($_REQUEST['code'])) {
     //         $code = $_REQUEST['code'];
