@@ -93,8 +93,8 @@
                     </div>    
                 </div>
             </div>    -->
-
-            <a href ="https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id={{env('CLIENT_ID')}}&redirect_uri={{env('REDIRECT_URL')}}&scope={{env('SCOPE')}}">Test</a>
+                            
+            <a href ="https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=789j7ove1jnugx&redirect_uri=http://localhost/linkedin/callback.php&scope=r_emailaddress,r_liteprofile,w_member_social">login Linkedin</a>
         </section>
 
     </body>

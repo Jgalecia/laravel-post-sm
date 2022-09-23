@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\PostFacebooksController;
 use App\Http\Controllers\SocialController;
+use App\Http\Controllers\LinkedinsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +32,6 @@ Route::group(['prefix' => 'auth/facebook', 'middleware' => 'auth'], function () 
     Route::get('/', [\App\Http\Controllers\SocialController::class, 'redirectToProvider']);
     Route::get('/callback', [\App\Http\Controllers\SocialController::class, 'handleProviderCallback']);
 });
+
+Route::get('auth/linkedin/callback', [LinkedinsController::class, 'handleLinkedinRedirect']);
+Route::get('testing', [LinkedinsController::class, 'callback']);
